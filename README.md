@@ -1,34 +1,22 @@
-## Esercizio di Oggi: Express API CRUD
+# ex-express-api-crud-relationships
 
-Oggi creeremo le API per il nostro blog. Utilizzeremo un nuovo progetto Express e Prisma. Potete utilizzare lo schema Prisma che avete creato nell'esercizio di ieri.
+## Esercizio
 
-### Definizione degli Endpoint
+Per l'esercizio di oggi, partendo dal lavoro svolto ieri, aggiungeremo i seguenti modelli con le relative relazioni col modello `Post`:
 
-#### 1. Creare un Nuovo Post
-- **Endpoint:** `POST /posts`
-- **Descrizione:** Crea un nuovo post.
+1. **Category** (one-to-many): 
+   - Ogni `Post` deve avere una categoria associata, e una categoria può avere più `Post` associati.
+   
+2. **Tags** (many-to-many): 
+   - Ogni `Post` può avere uno o più tag associati, e ogni `Tag` può avere uno o più `Post` associati.
 
-#### 2. Recuperare un Post Utilizzando il Suo Slug
-- **Endpoint:** `GET /posts/:slug`
-- **Descrizione:** Recupera un post utilizzando il suo slug.
+Successivamente, aggiungeremo la validazione dei dati utilizzando **Express Validator** alle rotte del nostro blog.
 
-#### 3. Recuperare Tutti i Post
-- **Endpoint:** `GET /posts`
-- **Descrizione:** Recupera tutti i post presenti nel database, con la possibilità di filtrare per:
-  - Post pubblicati.
-  - Post che contengono una determinata parola nel titolo o nel contenuto.
+Infine, ci assicureremo che le richieste di lettura `GET` restituiscano anche la categoria e i tags di ogni singolo `Post`.
 
-#### 4. Aggiornare un Post
-- **Endpoint:** `PUT /posts/:slug`
-- **Descrizione:** Aggiorna un post.
+### Piccolo suggerimento
+Se avete già popolato la tabella dei `posts`, indicate il campo `categoryId` come nullable o con un valore di default, altrimenti avrete un errore in fase di migrazione.
 
-#### 5. Eliminare un Post
-- **Endpoint:** `DELETE /posts/:slug`
-- **Descrizione:** Elimina un post.
-
-### Bonus
-
-1. **Implementare la Paginazione**
-2. **Gestire gli Errori:**
-   - Restituire uno stato HTTP 404 e un messaggio di errore nel caso in cui una rotta non sia stata trovata.
-   - Restituire uno stato HTTP 500 e un messaggio di errore nel caso in cui venga sollevata un'eccezione dal Prisma Client.
+## BONUS
+1. Implementare le operazioni di CRUD per il modello `Category`.
+2. Implementare le operazioni di CRUD per il modello `Tag`.
