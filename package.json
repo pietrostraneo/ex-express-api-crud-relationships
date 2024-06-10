@@ -1,5 +1,5 @@
 {
-  "name": "express-api-crud",
+  "name": "express-api-crud-relationship",
   "version": "1.0.0",
   "description": "REST API with express + prisma",
   "main": "app.js",
